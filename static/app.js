@@ -2,9 +2,10 @@ const uploadSection = document.querySelector('.upload__section');
 const dragText = document.querySelector('.header');
 const fileSection = document.querySelector('.files');
 const fileInput = document.getElementById('myFile');
-const submit = document.querySelector('.file__button')
+const submit = document.querySelector('.file__button');
 
 let files = [];
+let fileData = [];
 
 uploadSection.addEventListener('dragover', (event) => {
     event.preventDefault();
@@ -45,11 +46,16 @@ function displayFiles() {
     });
 }
 
-function dataUrls(files) {
+function dataUrls(files, callback) {
+    let count = 0;
     files.forEach(file => {
         let fileReader = new FileReader();
         fileReader.onload = (event) => {
-            console.log(event.target.result);  // This is the base64 URL of the file
+            fileData.push({ name: file.name, dataURL: event.target.result });
+            count++;
+            if (count === files.length) {
+                callback();
+            }
         };
         fileReader.readAsDataURL(file);
     });
@@ -57,5 +63,23 @@ function dataUrls(files) {
 
 submit.addEventListener('click', (event) => {
     event.preventDefault();
-    dataUrls(files);
+    fileData = [];
+    dataUrls(files, () => {
+        fetch('http://127.0.0.1:5000/upload', {
+            method: 'POST',
+            credentials: 'include',
+            body: JSON.stringify({ files: fileData }),  // Adjusted to match server-side expectation
+            mode: 'cors',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    });
 });
