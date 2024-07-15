@@ -2,6 +2,7 @@ const uploadSection = document.querySelector('.upload__section');
 const dragText = document.querySelector('.header');
 const fileSection = document.querySelector('.files');
 const fileInput = document.getElementById('myFile');
+const submit = document.querySelector('.file__button')
 
 let files = [];
 
@@ -43,3 +44,18 @@ function displayFiles() {
         fileSection.innerHTML += fileTag;
     });
 }
+
+function dataUrls(files) {
+    files.forEach(file => {
+        let fileReader = new FileReader();
+        fileReader.onload = (event) => {
+            console.log(event.target.result);  // This is the base64 URL of the file
+        };
+        fileReader.readAsDataURL(file);
+    });
+}
+
+submit.addEventListener('click', (event) => {
+    event.preventDefault();
+    dataUrls(files);
+});
