@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OwlMentor_Backend</title>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar__container">
+            <div class="logo__container">
+                <img src="/static/OlympicHeightsHS_logoHP.png" alt="Logo">
+                <div class="logo__text">
+                    <h1>Olympic Heights Community High School</h1>
+                    <p>Educate. Affirm. Inspire.</p>
+                </div>
+            </div>
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <button class="navbar__button">Upload</button>
+                </li>
+                <li class="navbar__item">
+                    <button class="navbar__button">Usage</button>
+                </li>
+                <li class="navbar__item">
+                    <button class="navbar__button">Help</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="main">
+        <div class="main__container">
+            <div class="files__section">
+                <div class="files__search">
+                    <input type="text" placeholder="Search..">
+                </div>
+                <div class="files">
+
+                </div>
+                <form id="submit__button" class="submit_btn">
+                    <input type="submit" class="file__button" value="submit" href="/">
+                </form>
+            </div>
+            <div class="upload__section">
+                <input type="file" id="myFile" name="filename" style="display: none;">
+                <button onclick="document.getElementById('myFile').click();">
+                    <div class="icon">
+                        <img src="/static/file.png" alt="fileLogo">
+                    </div>
+                    <span class="header">Drag & Drop</span>
+                    <span class="header2"> or <span class="browseButton">Click to Browse</span></span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="/static/app.js"></script>
+</body>
+</html>

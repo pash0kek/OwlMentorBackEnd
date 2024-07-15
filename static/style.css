@@ -1,0 +1,207 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background: #434343;
+    height: 120px;
+    width: 100%;
+}
+
+.navbar__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.logo__container {
+    display: flex;  
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+}
+
+.logo__container img {
+    padding-left: 50px;
+    width: 170px;
+}
+
+.logo__text {
+    margin-left: 20px;
+}
+
+.logo__text h1 {
+    color: #fff;
+}
+
+.logo__text p {
+    color: #fff;
+}
+
+
+.navbar__menu {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-around;
+}
+
+.navbar__button {
+    background: #d5cc20;
+    height: 50px;
+    width: 200px;
+    color: #000;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.navbar__button:hover {
+    background: #a09913;
+}
+
+.main {
+    background: #f9fafb;
+    height: calc(100% - 120px); /* Adjust height to account for the navbar */
+}
+
+.main__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.files__section {
+    display: flex;
+    flex-direction: column;
+    background: #f9fafb;
+    width: 20%;
+    height: 100%;
+    margin: 0;
+    border-right: 3px dashed #00000026;
+}
+
+.files {
+    display: flex;
+    flex-direction: column;  
+    width: 100%;
+    height: 100%;
+}
+
+.file__row {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    height: 5%;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background: #fff;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: 3px dashed #00000026;
+    transition: all 0.3 ease;
+}
+
+.file__row:hover {
+    background: #00000026;
+}
+
+.file__row p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #00000078;
+    max-width: 90%;
+    padding: 5px;
+}
+
+.files__search {
+    display: flex;
+    background: #fff;
+    max-width: 100%; 
+    height: 5%;
+    margin: 5px;
+    border-radius: 10px;
+    border: 3px solid #00000026;
+}
+
+.files__search input {
+    width: 100%; 
+    box-sizing: border-box; 
+    padding-left: 5px;
+    border: none;
+    border-radius: 10px;
+}
+
+.submit__button {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    margin: 10px;
+}
+
+.file__button {
+    background: #fff;
+    width: 100%;
+    height: 2.5rem;
+    border-radius: 10px;
+    border: 3px solid #00000026;
+    cursor: pointer;
+    transition: all 0.3 ease;
+}
+
+.file__button:hover {
+    background: #00000026;
+}
+
+.upload__section {
+    display: flex;
+    background: transparent;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 90%;
+    border-radius: 100px;
+    margin: 25px;
+}
+
+.upload__section.active {
+    background: #00000026;
+}
+
+.upload__section button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    border-radius: 100px;
+    border: 3px dashed #00000026;
+    transition: all 0.3 ease;
+}
+
+.upload__section button:hover {
+    background:#00000008;
+}
