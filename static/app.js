@@ -12,20 +12,22 @@ let fileData = [];
 function displayFilesNotAdded() {
     fileSectionNotAdded.innerHTML = ""; 
     files.forEach(file => {
-        let fileTag = `<div class="file__row"><p>${file.name}</p><img src="/static/trash.png"></div>`;
+        let fileTag = `<div class="file__row"><p>${file.name}</p><img src="/static/trash.png" class="delete-btn" data-name="${file.name}"></div>`;
         fileSectionNotAdded.innerHTML += fileTag;
     });
+    attachDeleteEvents();
 }
 
 // Function to display files that are already added (files in localStorage)
 function displayFilesAdded() {
     fileSectionAdded.innerHTML = "";
-    for (let key in localStorage){
+    for (let key in localStorage) {
         if (localStorage.hasOwnProperty(key)) {
-            let fileTag = `<div class="file__row"><p>${key}</p><img src="/static/trash.png"></div>`;
+            let fileTag = `<div class="file__row"><p>${key}</p><img src="/static/trash.png" class="delete-btn" data-name="${key}"></div>`;
             fileSectionAdded.innerHTML += fileTag;
         }
     }
+    attachDeleteEvents();
 }
 
 uploadSection.addEventListener('dragover', (event) => {
@@ -115,6 +117,24 @@ function store() {
     // Update display after storing files
     displayFilesNotAdded();
     displayFilesAdded();
+}
+
+function attachDeleteEvents() {
+    const deleteButtons = document.querySelectorAll('.delete-btn');
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const fileName = event.target.getAttribute('data-name');
+            // Remove from local storage
+            if (localStorage.getItem(fileName)) {
+                localStorage.removeItem(fileName);
+            }
+            // Remove from files array if it's not uploaded yet
+            files = files.filter(file => file.name !== fileName);
+            // Update the display
+            displayFilesNotAdded();
+            displayFilesAdded();
+        });
+    });
 }
 
 // Initial display update when the page loads
