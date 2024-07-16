@@ -29,5 +29,17 @@ def upload_files():
 
     return jsonify({'status': 'success', 'message': 'Files uploaded successfully'})
 
+@app.route('/delete', methods=['POST'])
+def delete_file():
+    data = request.json
+    file_name = data.get('file_name')
+    file_path = os.path.join(UPLOAD_FOLDER, file_name)
+    
+    if os.path.exists(file_path):
+        os.remove(file_path)
+        return jsonify({'status': 'success', 'message': f'{file_name} deleted successfully'})
+    else:
+        return jsonify({'status': 'error', 'message': f'{file_name} not found'}), 404
+
 if __name__ == '__main__':
     app.run(debug=True)

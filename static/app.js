@@ -124,15 +124,35 @@ function attachDeleteEvents() {
     deleteButtons.forEach(button => {
         button.addEventListener('click', (event) => {
             const fileName = event.target.getAttribute('data-name');
+            
             // Remove from local storage
             if (localStorage.getItem(fileName)) {
                 localStorage.removeItem(fileName);
             }
+            
             // Remove from files array if it's not uploaded yet
             files = files.filter(file => file.name !== fileName);
-            // Update the display
-            displayFilesNotAdded();
-            displayFilesAdded();
+            
+            // Call the delete endpoint to remove the file from the server
+            fetch('http://127.0.0.1:5000/delete', {
+                method: 'POST',
+                credentials: 'include',
+                body: JSON.stringify({ file_name: fileName }),
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);
+                // Update the display
+                displayFilesNotAdded();
+                displayFilesAdded();
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
         });
     });
 }
