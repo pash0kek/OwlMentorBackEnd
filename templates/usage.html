@@ -30,36 +30,14 @@
             </ul>
         </div>
     </nav>
-    <div class="main">
-        <div class="main__container">
-            <div class="files__section">
-                <div class="files">
-                    <p>Not Submitted Files</p>
-                    <div class="not__added">
-
-                    </div>
-                    <br />
-                    <p>Submitted Files</p>
-                    <div class="added">
-
-                    </div>
-                </div>
-                <form id="submit__button" class="submit_btn">
-                    <input type="submit" class="file__button" value="submit" href="/">
-                </form>
-            </div>
-            <div class="upload__section">
-                <input type="file" id="myFile" name="filename" style="display: none;">
-                <button onclick="document.getElementById('myFile').click();">
-                    <div class="icon">
-                        <img src="/static/file.png" alt="fileLogo">
-                    </div>
-                    <span class="header">Drag & Drop</span>
-                    <span class="header2"> or <span class="browseButton">Click to Browse</span></span>
-                </button>
-            </div>
+    <div class="usage">
+        <div class="usage__container">
+            <div class="graph" id="1"></div>
+            <div class="graph" id="2"></div>
+            <div class="graph" id="3"></div>
+            <div class="graph" id="4"></div>
         </div>
     </div>
-    <script src="/static/app.js"></script>
+    <!-- <script src="/static/app.js"></script> -->
 </body>
 </html>
