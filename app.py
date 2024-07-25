@@ -29,6 +29,10 @@ def upload_files():
 
     return jsonify({'status': 'success', 'message': 'Files uploaded successfully'})
 
+@app.route('/usage')
+def usage():
+    return render_template('usage.html')
+
 @app.route('/delete', methods=['POST'])
 def delete_file():
     data = request.json
