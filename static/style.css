@@ -76,7 +76,7 @@ html, body {
 
 .main {
     background: #f9fafb;
-    height: calc(100% - 120px); /* Adjust height to account for the navbar */
+    height: calc(100% - 120px); 
 }
 
 .main__container {

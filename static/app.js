@@ -4,6 +4,9 @@ const fileSectionAdded = document.querySelector('.added');
 const fileSectionNotAdded = document.querySelector('.not__added');
 const fileInput = document.getElementById('myFile');
 const submit = document.querySelector('.file__button');
+const uploadButton = document.getElementById('uploadbttn');
+const usageButton = document.getElementById('usagebttn');
+
 
 let files = [];
 let fileData = [];
@@ -29,6 +32,16 @@ function displayFilesAdded() {
     }
     attachDeleteEvents();
 }
+
+usageButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    location.href = 'http://127.0.0.1:5000/usage';
+});
+
+uploadButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    location.href = 'http://127.0.0.1:5000';
+});
 
 uploadSection.addEventListener('dragover', (event) => {
     event.preventDefault();
@@ -94,8 +107,7 @@ submit.addEventListener('click', (event) => {
         .then(response => response.json())
         .then(data => {
             console.log('Success:', data);
-            store(); // Store files in localStorage after successful upload
-            // Clear the files array and update the display
+            store(); 
             files = [];
             displayFilesNotAdded();
             displayFilesAdded();
@@ -125,15 +137,12 @@ function attachDeleteEvents() {
         button.addEventListener('click', (event) => {
             const fileName = event.target.getAttribute('data-name');
             
-            // Remove from local storage
             if (localStorage.getItem(fileName)) {
                 localStorage.removeItem(fileName);
             }
             
-            // Remove from files array if it's not uploaded yet
             files = files.filter(file => file.name !== fileName);
             
-            // Call the delete endpoint to remove the file from the server
             fetch('http://127.0.0.1:5000/delete', {
                 method: 'POST',
                 credentials: 'include',
