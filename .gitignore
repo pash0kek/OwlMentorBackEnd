@@ -1,5 +1,7 @@
-bin
-lib
 pyvenv.vfg
 uploads
 .env
+bin
+include
+lib
+embeddings.csv
