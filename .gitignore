@@ -1,5 +1,6 @@
+.env
 embeddings.csv
-pyvenv.vfg
+pyvenv.cfg
 uploads
 bin
 include
