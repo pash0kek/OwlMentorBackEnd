@@ -6,6 +6,7 @@ const fileInput = document.getElementById('myFile');
 const submit = document.querySelector('.file__button');
 const uploadButton = document.getElementById('uploadbttn');
 const usageButton = document.getElementById('usagebttn');
+const tryButton = document.getElementById('trybttn');
 
 
 let files = [];
@@ -41,6 +42,11 @@ usageButton.addEventListener('click', (event) => {
 uploadButton.addEventListener('click', (event) => {
     event.preventDefault();
     location.href = 'http://127.0.0.1:5000';
+});
+
+tryButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    location.href = 'http://127.0.0.1:5000/playground';
 });
 
 uploadSection.addEventListener('dragover', (event) => {
