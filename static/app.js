@@ -36,17 +36,17 @@ function displayFilesAdded() {
 
 usageButton.addEventListener('click', (event) => {
     event.preventDefault();
-    location.href = 'http://127.0.0.1:5000/usage';
+    location.href = 'https://owlmentor.co/usage';
 });
 
 uploadButton.addEventListener('click', (event) => {
     event.preventDefault();
-    location.href = 'http://127.0.0.1:5000';
+    location.href = 'https://owlmentor.co';
 });
 
 tryButton.addEventListener('click', (event) => {
     event.preventDefault();
-    location.href = 'http://127.0.0.1:5000/playground';
+    location.href = 'https://owlmentor.co/playground';
 });
 
 uploadSection.addEventListener('dragover', (event) => {
@@ -101,7 +101,7 @@ submit.addEventListener('click', (event) => {
     event.preventDefault();
     fileData = [];
     dataUrls(files, () => {
-        fetch('http://127.0.0.1:5000/upload', {
+        fetch('https://owlmentor.co/upload', {
             method: 'POST',
             credentials: 'include',
             body: JSON.stringify({ files: fileData }),
@@ -149,7 +149,7 @@ function attachDeleteEvents() {
             
             files = files.filter(file => file.name !== fileName);
             
-            fetch('http://127.0.0.1:5000/delete', {
+            fetch('https://owlmentor.co/delete', {
                 method: 'POST',
                 credentials: 'include',
                 body: JSON.stringify({ file_name: fileName }),

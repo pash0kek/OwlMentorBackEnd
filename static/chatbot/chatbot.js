@@ -34,7 +34,7 @@ class Chatbox {
 
         this.showTypingIndicator(chatbox);
 
-        fetch('http://127.0.0.1:5000/chat', {
+        fetch('https://owlmentor.co/chat', {
             method: 'POST',
             credentials: 'include',
             body: JSON.stringify({ message: text1 }),
